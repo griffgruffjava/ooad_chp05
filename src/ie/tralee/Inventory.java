@@ -1,14 +1,13 @@
 package ie.tralee;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Inventory {
-  private List guitars;
+class Inventory {
+  private final List<Guitar> guitars;
 
   public Inventory() {
-    guitars = new LinkedList();
+    guitars = new LinkedList<>();
   }
 
   public void addGuitar(String serialNumber, double price,
@@ -18,8 +17,8 @@ public class Inventory {
   }
 
   public Guitar getGuitar(String serialNumber) {
-    for (Iterator i = guitars.iterator(); i.hasNext(); ) {
-      Guitar guitar = (Guitar)i.next();
+    for (Object guitar1 : guitars) {
+      Guitar guitar = (Guitar) guitar1;
       if (guitar.getSerialNumber().equals(serialNumber)) {
         return guitar;
       }
@@ -28,9 +27,9 @@ public class Inventory {
   }
 
   public List search(GuitarSpec searchSpec) {
-    List matchingGuitars = new LinkedList();
-    for (Iterator i = guitars.iterator(); i.hasNext(); ) {
-      Guitar guitar = (Guitar)i.next();
+    List<Guitar> matchingGuitars = new LinkedList<>();
+    for (Object guitar1 : guitars) {
+      Guitar guitar = (Guitar) guitar1;
       if (guitar.getSpec().matches(searchSpec))
         matchingGuitars.add(guitar);
     }

@@ -1,10 +1,10 @@
 package ie.tralee;
 
-public class Guitar {
+class Guitar {
 
-  private String serialNumber;
+  private final String serialNumber;
   private double price;
-  GuitarSpec spec;
+  private final GuitarSpec spec;
 
   public Guitar(String serialNumber, double price, GuitarSpec spec) {
     this.serialNumber = serialNumber;
